@@ -16,12 +16,10 @@ class Option(Flag):
     pass
 
 class Vars(Flag):
-    def __init__(self,name:str, doc_str:str, arg_count:int, arg_types:tuple, *str_reps)->None:
+    def __init__(self,name:str, doc_str:str, arg_types:tuple, *str_reps)->None:
         super().__init__(name, doc_str, *str_reps)
-        self.arg_count = arg_count
         self.arg_types = arg_types
-        #TODO excetions
-        assert len(arg_types)==arg_count
+        self.arg_count = len(arg_types)
 
 def main()->None:
     v = Option("name","doc_str","tsep","h")
