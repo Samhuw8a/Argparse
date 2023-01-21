@@ -26,7 +26,7 @@ jobs:
       - name: Lint src with mypy
         run: |
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          mypy --ignore-missing-imports --disallow-untyped-calls argparse
+          mypy --ignore-missing-imports --disallow-untyped-calls argparser
       - name: Lint tests with mypy
         run: |
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
