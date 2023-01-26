@@ -1,5 +1,5 @@
 from abc import ABC
-from filename import filename
+from argparser.filename import filename
 
 class Flag(ABC):
     def __init__(self,name:str, doc_str:str, *str_rep)->None:
