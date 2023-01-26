@@ -1,5 +1,5 @@
-from flags import Option, Vars, Flag
-from filename import filename
+from argparser.flags import Option, Vars, Flag
+from argparser.filename import filename
 
 class Group():
     def __init__(self,name:str,description:str)->None:
