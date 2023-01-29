@@ -5,9 +5,10 @@ from argparser.parser import *
 from argparser.flags import *
 from argparser.type_checker import *
 
-class Argparser():
+
+class Argparser:
     def __init__(self):
         raise NotImplementedError
 
-    def get_flags(self)->dict:
+    def get_flags(self) -> dict:
         raise NotImplementedError
