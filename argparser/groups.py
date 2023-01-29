@@ -17,6 +17,7 @@ class Group:
         self._group_flags[fl.name] = fl
         #TODO type user_spec default values statt None
         self._group_values[fl.name] = None
+
         print(fl)
 
     def __getitem__(self, name: str) -> Flag:
