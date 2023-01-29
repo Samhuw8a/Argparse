@@ -15,7 +15,7 @@ class Group:
 
     def add_flag(self, fl: Flag) -> None:
         self._group_flags[fl.name] = fl
-        #TODO type user_spec default values statt None
+        # TODO type user_spec default values statt None
         self._group_values[fl.name] = None
         print(fl)
 
