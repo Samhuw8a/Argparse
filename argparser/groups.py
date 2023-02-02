@@ -3,16 +3,16 @@ from argparser.flags import Option, Vars, Flag
 from argparser.filename import filename
 
 
-class Multilevel_namespace():
-    def __init__(self, dct:dict) -> None:
-        for k,el in dct.items():
-            if not isinstance(k,str):
+class Multilevel_namespace:
+    def __init__(self, dct: dict) -> None:
+        for k, el in dct.items():
+            if not isinstance(k, str):
                 raise AttributeError("Keys dürfen nur strings sein")
-            if isinstance(el,dict):
+            if isinstance(el, dict):
                 self.__dict__[k] = Multilevel_namespace(el)
             else:
                 self.__dict__[k] = el
-    
+
 
 class Group:
     def __init__(self, name: str, description: str) -> None:
@@ -47,12 +47,7 @@ class Group:
 
 
 def main() -> None:
-    n:Any = Multilevel_namespace({
-        "abs": "a",
-        "sub": {
-            "a": "b",
-        }
-    })
+    n: Any = Multilevel_namespace({"abs": "a", "sub": {"a": "b"}})
     print(n.abs)
     print(n.sub.a)
 
