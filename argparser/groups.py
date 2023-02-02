@@ -3,6 +3,17 @@ from argparser.flags import Option, Vars, Flag
 from argparser.filename import filename
 
 
+class Multilevel_namespace():
+    def __init__(self, dct:dict) -> None:
+        for k,el in dct.items():
+            if not isinstance(k,str):
+                raise AttributeError("Keys dürfen nur strings sein")
+            if isinstance(el,dict):
+                self.__dict__[k] = Multilevel_namespace(el)
+            else:
+                self.__dict__[k] = el
+    
+
 class Group:
     def __init__(self, name: str, description: str) -> None:
         self._group_flags: dict = {}
@@ -36,11 +47,20 @@ class Group:
 
 
 def main() -> None:
-    g = Group("Test_gruppe", "eine Test_gruppe")
-    g.add_flag(Vars("asfs", "doc_str", (int, filename), "t"))
-    g.set_value_to_flag(g["asfs"], 1, "asdf")
-    print(g._group_values)
-    print(g)
+    n:Any = Multilevel_namespace({
+        "abs": "a",
+        "sub": {
+            "a": "b",
+        }
+    })
+    print(n.abs)
+    print(n.sub.a)
+
+    #  g = Group("Test_gruppe", "eine Test_gruppe")
+    #  g.add_flag(Vars("asfs", "doc_str", (int, filename), "t"))
+    #  g.set_value_to_flag(g["asfs"], 1, "asdf")
+    #  print(g._group_values)
+    #  print(g)
 
 
 if __name__ == "__main__":
